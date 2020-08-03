@@ -55,7 +55,7 @@ final class JMSTypeParser
         $nullable = !$isSubType;
 
         if (0 === \count($typeInfo['params'])) {
-            if (self::TYPE_ARRAY === $typeInfo['name']) {
+            if (self::TYPE_ARRAY === $typeInfo['name'] || 'iterable' === $typeInfo['name']) {
                 return new PropertyTypeArray(new PropertyTypeUnknown(false), false, $nullable);
             }
 
@@ -69,7 +69,7 @@ final class JMSTypeParser
             return new PropertyTypeClass($typeInfo['name'], $nullable);
         }
 
-        if (self::TYPE_ARRAY === $typeInfo['name']) {
+        if (self::TYPE_ARRAY === $typeInfo['name'] || $typeInfo['name'] === 'iterable') {
             if (1 === \count($typeInfo['params'])) {
                 return new PropertyTypeArray($this->parseType($typeInfo['params'][0], true), false, $nullable);
             }
