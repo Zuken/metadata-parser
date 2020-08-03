@@ -1,5 +1,5 @@
 {
-    "name": "liip/metadata-parser",
+    "name": "zuken/metadata-parser",
     "description": "Parser for metadata",
     "type": "library",
     "license": "MIT",
